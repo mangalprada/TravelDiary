@@ -76,15 +76,16 @@ export default class EditSite extends Component {
       });
 
     window.location = '/';
+    // window.location = `/sites/${this.state.cityid}`;
   }
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: '40px' }}>
         <h3>Edit Site</h3>
         <form onSubmit={this.onSubmit} className="col-md-6">
           <div className="form-group">
-            <label>Change the picture</label>
+            <label>Change the picture here</label> {'  '}
             <input
               type="file"
               name="imageData"
@@ -112,11 +113,7 @@ export default class EditSite extends Component {
             />
           </div>
           <div className="form-group">
-            <input
-              type="submit"
-              value="Save Site"
-              className="btn btn-primary"
-            />
+            <input type="submit" value="Save" className="btn btn-primary" />
           </div>
         </form>
         <div

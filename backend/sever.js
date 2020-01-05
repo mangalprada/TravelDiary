@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 var path = require('path');
@@ -25,6 +24,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// serve static assets normally
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
@@ -35,7 +35,7 @@ db.once('open', () => {
 });
 
 const citiesRouter = require('./routes/cityRoute');
-const sitesRouter = require('./routes/siteRoute');
+//const sitesRouter = require('./routes/siteRoute');
 
 app.use('/', citiesRouter);
 //app.use('/', sitesRouter);

@@ -55,13 +55,13 @@ export default class AddSite extends Component {
       .catch(error => {
         console.log(error);
       });
-
     window.location = '/';
+    // window.location = `/sites/${this.state.cityid}`;
   }
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: '40px' }}>
         <h3>Add New Site</h3>
 
         <form onSubmit={this.onSubmit} className="col-md-6">
@@ -85,7 +85,7 @@ export default class AddSite extends Component {
           </div>
           <div className="form-group">
             <label>Description: </label>
-            <input
+            <textarea
               type="text"
               required
               className="form-control"
@@ -95,11 +95,7 @@ export default class AddSite extends Component {
           </div>
 
           <div className="form-group">
-            <input
-              type="submit"
-              value="Save Site"
-              className="btn btn-primary"
-            />
+            <input type="submit" value="Save" className="btn btn-primary" />
           </div>
         </form>
         <div

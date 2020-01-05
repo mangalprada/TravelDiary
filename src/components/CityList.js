@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const City = props => (
-  <div className="card" style={{ width: '18rem' }}>
+  <div
+    className="card"
+    style={{ width: '40%', display: 'table', margin: '10px auto' }}
+  >
     <div>
       {props.city.sites.length > 0 ? (
         <img
@@ -52,15 +55,14 @@ const City = props => (
         Edit
       </Link>
       {'  '}
-      <a
-        href="#"
+      <div
         className="btn btn-primary"
         onClick={() => {
           props.deleteCity(props.city._id);
         }}
       >
         delete
-      </a>
+      </div>
     </div>
   </div>
 );
@@ -96,23 +98,27 @@ export default class ExercisesList extends Component {
   }
 
   cityList() {
-    return this.state.cities.map(currentcity => {
-      return (
-        <City
-          city={currentcity}
-          deleteCity={this.deleteCity}
-          key={currentcity._id}
-        />
-      );
-    });
+    return (
+      <div style={{ marginTop: '40px' }}>
+        {this.state.cities.reverse().map(currentcity => {
+          return (
+            <City
+              city={currentcity}
+              deleteCity={this.deleteCity}
+              key={currentcity._id}
+            />
+          );
+        })}
+        <div style={{ position: 'fixed', top: '90px', right: '60px' }}>
+          <Link to="/add" className="btn btn-primary nav-link">
+            Add City +
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   render() {
-    return (
-      <div>
-        <h3>City List</h3>
-        {this.cityList()}
-      </div>
-    );
+    return <div>{this.cityList()}</div>;
   }
 }

@@ -40,8 +40,7 @@ export default class AddCity extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Save</h3>
+      <div style={{ marginTop: ' 40px ' }}>
         <form onSubmit={this.onSubmit} className="col-md-6">
           <div className="form-group">
             <label>City name: </label>
@@ -54,11 +53,7 @@ export default class AddCity extends Component {
             />
           </div>
           <div className="form-group">
-            <input
-              type="submit"
-              value="Create City"
-              className="btn btn-primary"
-            />
+            <input type="submit" value="Add City" className="btn btn-primary" />
           </div>
         </form>
       </div>

@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Site = props => (
-  <div className="card" style={{ width: '20rem' }}>
+  <div
+    className="card"
+    style={{ width: '45%', display: 'table', margin: '10px auto' }}
+  >
     <img
       src={`http://localhost:5000/${props.site.imageData}`}
       className="card-img-top"
@@ -20,6 +23,7 @@ const Site = props => (
       >
         delete
       </a>
+      {'  '}
       <Link
         to={{
           pathname: `/editsite/${props.site._id}`,
@@ -68,15 +72,30 @@ export default class SiteList extends Component {
   }
 
   render() {
-    return this.state.sites.map(currentsite => {
-      return (
-        <Site
-          site={currentsite}
-          deleteSite={this.deleteSite}
-          cityid={this.props.location.cityid}
-          key={currentsite._id}
-        />
-      );
-    });
+    return (
+      <div style={{ marginTop: '40px' }}>
+        {this.state.sites.reverse().map(currentsite => {
+          return (
+            <Site
+              site={currentsite}
+              deleteSite={this.deleteSite}
+              cityid={this.props.location.cityid}
+              key={currentsite._id}
+            />
+          );
+        })}
+        <div style={{ position: 'fixed', top: '90px', right: '60px' }}>
+          <Link
+            className="btn btn-primary nav-link"
+            to={{
+              pathname: `addsite/${this.props.location.cityid}`,
+              cityid: this.props.location.cityid
+            }}
+          >
+            Add Site +
+          </Link>
+        </div>
+      </div>
+    );
   }
 }
