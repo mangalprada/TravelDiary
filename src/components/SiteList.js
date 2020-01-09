@@ -74,7 +74,7 @@ export default class SiteList extends Component {
   render() {
     return (
       <div style={{ marginTop: '40px' }}>
-        {this.state.sites.reverse().map(currentsite => {
+        {this.state.sites.map(currentsite => {
           return (
             <Site
               site={currentsite}

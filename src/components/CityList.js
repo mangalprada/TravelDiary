@@ -100,7 +100,7 @@ export default class ExercisesList extends Component {
   cityList() {
     return (
       <div style={{ marginTop: '40px' }}>
-        {this.state.cities.reverse().map(currentcity => {
+        {this.state.cities.map(currentcity => {
           return (
             <City
               city={currentcity}
