@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import _ from 'lodash';
 
 const City = props => (
   <div
     className="card"
-    style={{ width: '40%', display: 'table', margin: '10px auto' }}
+    style={{ width: '26%', display: 'table', margin: '20px 20px' }}
   >
     <div>
       {props.city.sites.length > 0 ? (
@@ -100,16 +101,20 @@ export default class ExercisesList extends Component {
   cityList() {
     return (
       <div style={{ marginTop: '40px' }}>
-        {this.state.cities.map(currentcity => {
+        <h1> Cities Visited :</h1>
+        {_.chunk(this.state.cities, 3).map((currentcity, rowIndex) => {
           return (
-            <City
-              city={currentcity}
-              deleteCity={this.deleteCity}
-              key={currentcity._id}
-            />
+            <div key={rowIndex} className="row">
+              {currentcity.map((col, colIndex) => {
+                return (
+                  <City city={col} deleteCity={this.deleteCity} key={col._id} />
+                );
+              })}
+            </div>
           );
         })}
-        <div style={{ position: 'fixed', top: '90px', right: '60px' }}>
+
+        <div style={{ position: 'fixed', top: '60px', right: '60px' }}>
           <Link to="/add" className="btn btn-primary nav-link">
             Add City +
           </Link>

@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import _ from 'lodash';
 
 const Site = props => (
   <div
     className="card"
-    style={{ width: '45%', display: 'table', margin: '10px auto' }}
+    style={{
+      width: '35%',
+      height: '30%',
+      display: 'table',
+      margin: '10px auto'
+    }}
   >
     <img
       src={`http://localhost:5000/${props.site.imageData}`}
@@ -74,17 +80,25 @@ export default class SiteList extends Component {
   render() {
     return (
       <div style={{ marginTop: '40px' }}>
-        {this.state.sites.map(currentsite => {
+        <h1> Tourist Sites Visited :</h1>
+
+        {_.chunk(this.state.sites, 2).map((currentsite, rowIndex) => {
           return (
-            <Site
-              site={currentsite}
-              deleteSite={this.deleteSite}
-              cityid={this.props.location.cityid}
-              key={currentsite._id}
-            />
+            <div key={rowIndex} className="row">
+              {currentsite.map((col, colIndex) => {
+                return (
+                  <Site
+                    site={col}
+                    deleteSite={this.deleteSite}
+                    cityid={this.props.location.cityid}
+                    key={currentsite._id}
+                  />
+                );
+              })}
+            </div>
           );
         })}
-        <div style={{ position: 'fixed', top: '90px', right: '60px' }}>
+        <div style={{ position: 'fixed', top: '70px', right: '60px' }}>
           <Link
             className="btn btn-primary nav-link"
             to={{

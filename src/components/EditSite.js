@@ -81,7 +81,7 @@ export default class EditSite extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: '40px' }}>
+      <div style={{ margin: ' 40px auto ' }}>
         <h3>Edit Site</h3>
         <form onSubmit={this.onSubmit} className="col-md-6">
           <div className="form-group">
@@ -104,7 +104,7 @@ export default class EditSite extends Component {
           </div>
           <div className="form-group">
             <label>Description: </label>
-            <input
+            <textarea
               type="text"
               required
               className="form-control"
